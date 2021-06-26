@@ -1,21 +1,26 @@
 import React from 'react'
 
 import styled from 'styled-components'
+import Fade from 'react-reveal/Fade';
 
 function Section({ title,description,leftButtonText,rightButtonText,backgroundImage }) {
     return (
         <Wrap bgImg={backgroundImage}>
-            <ItemText>
-                <h1>{title}</h1>
-                <p>{description}</p>
-            </ItemText>
+            <Fade bottom>
+                <ItemText>
+                    <h1>{title}</h1>
+                    <p>{description}</p>
+                </ItemText>
+            </Fade>
             <Buttons>
-                <ButtonGroup>
-                    <LeftButton>{leftButtonText}</LeftButton>
-                    {rightButtonText &&
-                        <RightButton>{rightButtonText}</RightButton>
-                    }
-                </ButtonGroup>
+                <Fade bottom>
+                    <ButtonGroup>
+                        <LeftButton>{leftButtonText}</LeftButton>
+                        {rightButtonText &&
+                            <RightButton>{rightButtonText}</RightButton>
+                        }
+                    </ButtonGroup>
+                </Fade>
                 <DownArrow src='./images/down-arrow.svg'/>
             </Buttons>
         </Wrap>
@@ -35,12 +40,12 @@ const Wrap = styled.div`
     flex-direction: column;
     justify-content: space-between; // vertical
     align-items: center; //horizontal
-`
+`;
 
 const ItemText = styled.div`
     padding-top: 15vh;
     text-align: center;
-`
+`;
 
 const ButtonGroup = styled.div`
     display: flex;
@@ -48,7 +53,7 @@ const ButtonGroup = styled.div`
     @media(max-width: 768px) {
         flex-direction: column; 
     }
-`
+`;
 
 const LeftButton = styled.div`
     color: white;
@@ -63,19 +68,17 @@ const LeftButton = styled.div`
     font-size: 12px;
     cursor: pointer;
     margin: 8px;
-`
+`;
 
 const RightButton = styled(LeftButton)`
     background-color: #D3D0D2;
     color: #2F3036;
-`
+`;
 
 const DownArrow = styled.img`
     margin-bottom: 20px;
     height: 40px;
     animation: animateDown infinite 1.5s
-`
+`;
 
-const Buttons = styled.div`
-
-`
+const Buttons = styled.div``;
