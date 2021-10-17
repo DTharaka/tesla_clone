@@ -93,3 +93,27 @@ class Tester implements __Employee {
     }
 
 }
+
+class __EmployeeFactory {
+    public static HashMap<String, __Employee> m = new HashMap<String, __Employee>();
+
+    public static __Employee getEmployee(String type) {
+        __Employee p = null;
+        if (m.get(type) != null) {
+            p = m.get(type);
+        } else {
+            if (type == "Developer") {
+                System.out.println("Developer created");
+                p = new Developer();
+            } else if (type == "Tester") {
+                System.out.println("Tester created");
+                p = new Tester();
+            } else {
+                System.out.println("No such a kind of __Employee");
+            }
+
+            m.put(type, p);
+        }
+        return p;
+    }
+}
